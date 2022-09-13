@@ -11,11 +11,11 @@ Câu hỏi kì này:
 - Giải thích cách khác, một Object tại mỗi tình huống khác nhau thì thể hiện hành vi khác nhau thì được xem là tính `Đa hình`. Ví dụ: bạn A trên trường là một *sinh viên* giỏi, ở CLB thì là một *thành viên* tích cực, về nhà lại là một *người con* ngoan.
 - Tính `Đa Hình` rất quan trọng để xác định một ngôn ngữ là Hướng đối tượng hay không. Vì ngôn ngữ hỗ trợ Class mà không có tính `Đa hình` thì chỉ là ngôn ngữ `Dựa trên đối tượng` (Objects-Based).
 ### 1.1. Tại sao cần sử dụng tính Đa hình ?
-- Tính Đa hình ta có thể vận dụng để giải quyết một số trường hợp:
+- Tính `Đa hình` ta có thể vận dụng để giải quyết một số trường hợp:
   - Các Class con cần sử dụng phương thức của Class cha để bổ sung cho 1 phương thức khác của nó.
   - Khi trong cùng 1 Class có nhiều phương thức cùng tên nhưng khác tham số. (Ghi đè).
 - Có thể dùng một tên duy nhất để lưu trữ biến của nhiều kiểu dữ liệu khác nhau.
-- Ta không phải viết lại mã hoặc lớp đã có sẵn. Sau khi một đoạn mã hoặc lớp được khởi tạo thành công, ta có thể tái sử dụng chúng nhờ vào Tính đa hình.
+- Ta không phải viết lại mã hoặc lớp đã có sẵn. Sau khi một đoạn mã hoặc lớp được khởi tạo thành công, ta có thể tái sử dụng chúng nhờ vào Tính `Đa hình`.
 ```CPP
 class Test
 {
@@ -38,7 +38,7 @@ int main() {
 } 
 ```
 ### 1.2. Phân loại Đa hình.
-- Có 2 loại Đa hình: Compile-time Polymorphism và Runtime Polymorphism. 
+- Có 2 loại `Đa hình`: Compile-time Polymorphism và Runtime Polymorphism. 
   - Compile-time Polymorphism: Chính là Nạp chồng hàm và Nạp chồng toán tử.
   - Runtime Polymorphism: là bao gồm Ghi đè và Hàm ảo.
 So sánh 2 loại và `Nạp chồng`, `Ghi đè` đã được đề cập trong buổi học trước nên ta không đi vào tìm hiểu chi tiết.
@@ -194,7 +194,7 @@ public:
     NhanVien(){};
     virtual int getSalary() = 0;
 };
-class NhanVienVanPhong
+class NhanVienVanPhong : public NhanVien
 {
 private:
     int days;
@@ -205,8 +205,8 @@ public:
     {
         return days * coeSalary;
     }
-}
-class NhanVienXuong
+};
+class NhanVienXuong : public NhanVien
 {
 private:
     int days;
@@ -217,7 +217,7 @@ public:
     {
         return days * coeSalary;
     }
-}
+};
 ```
 ### 4.4. Lớp trừu tượng (Abstract Class):
 - Là một Class chứa ít nhất một Virtual Method, và ta không thể tạo được Object thuộc Class này.
